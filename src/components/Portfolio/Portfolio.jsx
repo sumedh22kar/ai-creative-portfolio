@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
 import { projects } from "../../generated/projects";
 import PortfolioCard from "./PortfolioCard";
-
+import ProjectDetails from "../ProjectDetails/ProjectDetails";
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
-
+  const [selectedProject, setSelectedProject] = useState(null);
   const categories = useMemo(() => {
     const uniqueCategories = [
       ...new Set(projects.map((project) => project.category)),
@@ -56,9 +56,20 @@ function Portfolio() {
 
       <div className="portfolio-grid">
         {filteredProjects.map((project) => (
-          <PortfolioCard key={project.id} project={project} />
+          <PortfolioCard
+            key={project.id}
+            project={project}
+            onOpen={setSelectedProject}
+          />
         ))}
       </div>
+
+      <ProjectDetails
+        project={selectedProject}
+        projects={projects}
+        onClose={() => setSelectedProject(null)}
+        onOpenProject={setSelectedProject}
+      />
     </section>
   );
 }

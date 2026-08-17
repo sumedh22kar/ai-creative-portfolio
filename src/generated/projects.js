@@ -10,7 +10,17 @@ export const projects = [
     "aspectRatio": "9 / 16",
     "featured": true,
     "published": true,
-    "displayOrder": 1
+    "displayOrder": 1,
+    "services": [
+      "AI Video Generation",
+      "Creative Direction",
+      "Video Editing"
+    ],
+    "tags": [
+      "AI Video",
+      "Product Advertising",
+      "Short-form"
+    ]
   },
   {
     "id": "project-002",
@@ -23,6 +33,16 @@ export const projects = [
     "aspectRatio": "9 / 16",
     "featured": true,
     "published": true,
-    "displayOrder": 2
+    "displayOrder": 2,
+    "services": [
+      "AI Video Generation",
+      "Creative Development",
+      "Video Editing"
+    ],
+    "tags": [
+      "AI Video",
+      "Social Media",
+      "Advertisement"
+    ]
   }
 ];
