@@ -13,13 +13,25 @@ function PortfolioMedia({ project }) {
     }
 
     return (
-      <img
-        className="portfolio-media"
-        style={{ aspectRatio: project.aspectRatio || "16 / 10" }}
-        src={project.mediaUrl}
-        alt={project.title}
-        loading="lazy"
-      />
+      <div
+        className="portfolio-image-wrapper"
+        style={{
+          aspectRatio: project.aspectRatio || "4 / 5",
+        }}
+        onContextMenu={(event) => event.preventDefault()}
+      >
+        <img
+          className="portfolio-media portfolio-media--image"
+          src={project.mediaUrl}
+          alt={project.title}
+          loading="lazy"
+          draggable="false"
+        />
+
+        <div className="portfolio-media__watermark">
+          AI CREATIVE
+        </div>
+      </div>
     );
   }
 
@@ -35,15 +47,16 @@ function PortfolioMedia({ project }) {
     if (!videoStarted) {
       return (
         <button
-  type="button"
-  className="portfolio-video-preview"
-  style={{
-    "--video-thumbnail": `url("${project.thumbnail}")`,
-    aspectRatio: project.aspectRatio || "16 / 10",
-  }}
-  onClick={() => setVideoStarted(true)}
-  aria-label={`Play ${project.title}`}
->
+          type="button"
+          className="portfolio-video-preview"
+          style={{
+            "--video-thumbnail": `url("${project.thumbnail}")`,
+            aspectRatio: project.aspectRatio || "16 / 10",
+          }}
+          onContextMenu={(event) => event.preventDefault()}
+          onClick={() => setVideoStarted(true)}
+          aria-label={`Play ${project.title}`}
+        >
   <div className="portfolio-video-preview__overlay">
     <span className="portfolio-video-preview__play">▶</span>
   </div>
