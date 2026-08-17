@@ -1,17 +1,19 @@
 export const projects = [
   {
-    id: "project-001",
-    title: "AI Product Advertisement",
-    category: "Product Advertising",
-    type: "video",
-    description:
-      "AI-generated product advertisement created for social media marketing.",
-    thumbnail: "",
-    videoUrl: "",
-    featured: true,
-    published: true,
-    displayOrder: 1,
-  },
+  id: "project-001",
+  title: "AI Product Advertisement",
+  category: "Product Advertising",
+  type: "youtube",
+  description:
+    "AI-generated product advertisement created for social media marketing.",
+  thumbnail:
+    "https://img.youtube.com/vi/DlFrVmvWL9I/maxresdefault.jpg",
+  mediaUrl: "https://www.youtube.com/embed/DlFrVmvWL9I",
+  aspectRatio: "9 / 16",
+  featured: true,
+  published: true,
+  displayOrder: 1,
+},
 
   {
     id: "project-002",
@@ -21,7 +23,7 @@ export const projects = [
     description:
       "AI-generated fashion visual with realistic clothing and lifestyle presentation.",
     thumbnail: "",
-    videoUrl: "",
+    mediaUrl: "",
     featured: true,
     published: true,
     displayOrder: 2,
@@ -31,11 +33,11 @@ export const projects = [
     id: "project-003",
     title: "AI UGC Testimonial",
     category: "AI UGC / Testimonials",
-    type: "video",
+    type: "youtube",
     description:
       "AI-generated testimonial-style video created for advertising and social media.",
     thumbnail: "",
-    videoUrl: "",
+    mediaUrl: "",
     featured: false,
     published: true,
     displayOrder: 3,

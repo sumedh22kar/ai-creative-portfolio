@@ -1,16 +1,10 @@
+import PortfolioMedia from "../PortfolioMedia/PortfolioMedia";
+
 function PortfolioCard({ project }) {
   return (
     <article className="portfolio-card">
       <div className="portfolio-card__media">
-        {project.type === "video" ? (
-          <div className="portfolio-card__video-placeholder">
-            <span>VIDEO</span>
-          </div>
-        ) : (
-          <div className="portfolio-card__image-placeholder">
-            <span>IMAGE</span>
-          </div>
-        )}
+        <PortfolioMedia project={project} />
       </div>
 
       <div className="portfolio-card__content">
