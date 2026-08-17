@@ -4,6 +4,9 @@ import FeaturedWork from "../components/FeaturedWork/FeaturedWork";
 import Portfolio from "../components/Portfolio/Portfolio";
 import Services from "../components/Services/Services";
 import Workflow from "../components/Workflow/Workflow";
+import About from "../components/About/About";
+import Contact from "../components/Contact/Contact";
+import Footer from "../components/Footer/Footer";
 function Home() {
   return (
     <div id="top">
@@ -15,6 +18,9 @@ function Home() {
         <Portfolio />
         <Services />
         <Workflow />
+        <About />
+        <Contact />
+        <Footer />
       </main>
     </div>
   );
