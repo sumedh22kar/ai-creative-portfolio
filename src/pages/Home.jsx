@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar/Navbar";
+import Hero from "../components/Hero/Hero";
 import Portfolio from "../components/Portfolio/Portfolio";
 
 function Home() {
@@ -7,11 +8,7 @@ function Home() {
       <Navbar />
 
       <main>
-        <section className="hero-placeholder">
-          <h1>AI Creative Studio</h1>
-          <p>AI Images • AI Videos • Creative Advertising</p>
-        </section>
-
+        <Hero />
         <Portfolio />
       </main>
     </div>
