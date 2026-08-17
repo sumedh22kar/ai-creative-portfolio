@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "fetch-content": "node --env-file=.env.local scripts/fetch-content.mjs",
+    "fetch-content": "node --env-file-if-exists=.env.local scripts/fetch-content.mjs",
     "build": "npm run fetch-content && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
