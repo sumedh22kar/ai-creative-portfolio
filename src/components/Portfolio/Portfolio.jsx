@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { projects } from "../../data/projects";
+import { projects } from "../../generated/projects";
 import PortfolioCard from "./PortfolioCard";
 
 function Portfolio() {
