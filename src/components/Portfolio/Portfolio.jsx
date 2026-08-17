@@ -1,10 +1,28 @@
+import { useMemo, useState } from "react";
 import { projects } from "../../data/projects";
 import PortfolioCard from "./PortfolioCard";
 
 function Portfolio() {
-  const publishedProjects = projects
-    .filter((project) => project.published)
-    .sort((a, b) => a.displayOrder - b.displayOrder);
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const categories = useMemo(() => {
+    const uniqueCategories = [
+      ...new Set(projects.map((project) => project.category)),
+    ];
+
+    return ["All", ...uniqueCategories];
+  }, []);
+
+  const filteredProjects = useMemo(() => {
+    return projects
+      .filter((project) => project.published)
+      .filter(
+        (project) =>
+          activeCategory === "All" ||
+          project.category === activeCategory,
+      )
+      .sort((a, b) => a.displayOrder - b.displayOrder);
+  }, [activeCategory]);
 
   return (
     <section className="portfolio-section" id="portfolio">
@@ -19,8 +37,25 @@ function Portfolio() {
         </p>
       </div>
 
+      <div className="portfolio-filters">
+        {categories.map((category) => (
+          <button
+            key={category}
+            type="button"
+            className={
+              activeCategory === category
+                ? "portfolio-filter active"
+                : "portfolio-filter"
+            }
+            onClick={() => setActiveCategory(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
       <div className="portfolio-grid">
-        {publishedProjects.map((project) => (
+        {filteredProjects.map((project) => (
           <PortfolioCard key={project.id} project={project} />
         ))}
       </div>
