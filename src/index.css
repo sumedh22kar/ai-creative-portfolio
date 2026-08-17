@@ -605,3 +605,97 @@
     padding: 24px 0;
   }
 }
+.workflow {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px 24px;
+}
+
+.workflow__header {
+  margin-bottom: 70px;
+}
+
+.workflow__header h2 {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+.workflow__steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.workflow-step {
+  min-width: 0;
+}
+
+.workflow-step__top {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin-bottom: 32px;
+}
+
+.workflow-step__top > span:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid #444;
+  border-radius: 50%;
+
+  font-size: 10px;
+  color: #aaa;
+}
+
+.workflow-step__line {
+  flex: 1;
+  height: 1px;
+  margin-left: 12px;
+  background: #292929;
+}
+
+.workflow-step h3 {
+  margin: 0 0 14px;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.workflow-step p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .workflow__steps {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 50px;
+  }
+
+  .workflow-step__line {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .workflow {
+    padding: 90px 24px;
+  }
+
+  .workflow__steps {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .workflow-step__top {
+    margin-bottom: 20px;
+  }
+}
