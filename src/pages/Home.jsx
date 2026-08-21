@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
+import StudioStats from "../components/StudioStats/StudioStats";
 import FeaturedWork from "../components/FeaturedWork/FeaturedWork";
 import Portfolio from "../components/Portfolio/Portfolio";
 import Services from "../components/Services/Services";
@@ -15,6 +16,7 @@ function Home() {
 
       <main>
         <Hero />
+        <StudioStats />
         <FeaturedWork />
         <Portfolio />
         <Services />
