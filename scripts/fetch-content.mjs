@@ -331,6 +331,33 @@ async function main() {
             description: "Attention-focused AI content designed for Reels, Shorts, ads and digital marketing."
           }
         ]
+      },
+      process: {
+        eyebrow: "HOW WE WORK",
+        title: "From idea to final creative.",
+        description: "A simple workflow designed to turn your concept into high-quality AI-powered visual content.",
+        steps: [
+          {
+            number: "01",
+            title: "Share Your Idea",
+            description: "Tell us about your product, brand, campaign or creative concept."
+          },
+          {
+            number: "02",
+            title: "Creative Direction",
+            description: "We define the visual style, concept, references and production direction."
+          },
+          {
+            number: "03",
+            title: "Create & Refine",
+            description: "We produce the AI-powered visuals and refine the creative based on feedback."
+          },
+          {
+            number: "04",
+            title: "Final Delivery",
+            description: "Receive the approved final creative ready for your campaign or platform."
+          }
+        ]
       }
     };
   }
