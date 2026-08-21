@@ -370,7 +370,7 @@ async function main() {
           "AI fashion creatives",
           "social media creatives"
         ],
-        siteUrl: "",
+        siteUrl: "https://ai-creative-portfolio-nine.vercel.app",
         shareImage: ""
       }
     };
