@@ -1,27 +1,21 @@
-import { siteConfig } from "../../generated/siteConfig";
+﻿import { siteConfig } from "../../generated/siteConfig";
 
 function ProjectCTA() {
-  const contact = siteConfig?.contact || {};
-  const rawWhatsapp = contact.whatsapp || "";
-  const digitsOnly = rawWhatsapp.replace(/\D/g, "");
-  const whatsappNumber =
-    digitsOnly.length === 10 ? `91${digitsOnly}` : digitsOnly;
-  const whatsappLink = whatsappNumber
-    ? `https://wa.me/${whatsappNumber}`
+  const { contact } = siteConfig;
+
+  const whatsappLink = contact.whatsapp
+    ? `https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`
     : null;
 
   return (
-    <section className="project-cta">
-      <div className="project-cta__inner">
+    <section className="project-cta" id="contact">
+      <div className="project-cta__content">
         <span className="section-label">START A PROJECT</span>
 
-        <h2>
-          Have a creative idea?
-          <span> Let's create it.</span>
-        </h2>
+        <h2>Have a creative idea?</h2>
 
         <p>
-          Let’s create AI-powered visuals and videos for your next project with MS AI Digital Creator.
+          Let’s create AI-powered visuals and videos for your next project.
         </p>
 
         <div className="project-cta__actions">
@@ -46,9 +40,9 @@ function ProjectCTA() {
           )}
 
           {!whatsappLink && !contact.email && (
-            <a href="#contact" className="project-cta__primary">
-              START A PROJECT →
-            </a>
+            <span className="project-cta__coming-soon">
+              Contact details coming soon
+            </span>
           )}
         </div>
       </div>
