@@ -73,5 +73,30 @@ export const projects = [
     "featured": false,
     "published": true,
     "displayOrder": 3
+  },
+  {
+    "id": "project-004",
+    "slug": "ai-fashion-creative",
+    "title": "AI Fashion Creative",
+    "category": "AI Fashion",
+    "type": "image",
+    "aspectRatio": "4 / 5",
+    "description": "AI-generated fashion visual created to showcase creative styling, garment presentation and commercial aesthetics.",
+    "mediaPath": "media/project-004.jpg",
+    "services": [
+      "AI Image Generation",
+      "Fashion Creative Direction",
+      "Product Visualization"
+    ],
+    "tags": [
+      "AI Fashion",
+      "Fashion Visual",
+      "Commercial Creative"
+    ],
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "displayOrder": 4,
+    "mediaUrl": "/generated/media/project-004.jpg"
   }
 ];

@@ -58,8 +58,18 @@ function ProjectDetails({ project, projects = [], onClose, onOpenProject }) {
           ×
         </button>
 
-        <div className="project-details__media">
-          <div className="project-details__media-inner">
+        <div
+          className={`project-details__media project-details__media--${project.type}`}
+        >
+          <div
+            className="project-details__media-inner"
+            style={{
+              aspectRatio:
+                project.type === "image"
+                  ? project.aspectRatio || "4 / 5"
+                  : undefined,
+            }}
+          >
             <PortfolioMedia project={project} />
           </div>
         </div>
