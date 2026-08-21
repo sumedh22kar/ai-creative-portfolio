@@ -14,22 +14,45 @@ function PortfolioCard({ project, onOpen }) {
         }
       }}
     >
-      <div className="portfolio-card__media">
+      <div
+        className="portfolio-card__media"
+        style={{
+          aspectRatio: project.aspectRatio || "16 / 9",
+        }}
+      >
         <PortfolioMedia project={project} />
+
+        <div className="portfolio-card__overlay">
+          <span className="portfolio-card__open">
+            VIEW PROJECT ↗
+          </span>
+        </div>
       </div>
 
       <div className="portfolio-card__content">
-        <span className="portfolio-card__category">
-          {project.category}
-        </span>
+        <div className="portfolio-card__meta">
+          <span className="portfolio-card__category">
+            {project.category}
+          </span>
+
+          {project.year && (
+            <span className="portfolio-card__year">
+              {project.year}
+            </span>
+          )}
+        </div>
 
         <h3>{project.title}</h3>
 
         <p>{project.description}</p>
 
-        <span className="portfolio-card__view">
-          VIEW PROJECT →
-        </span>
+        {project.tags?.length > 0 && (
+          <div className="portfolio-card__tags">
+            {project.tags.slice(0, 3).map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        )}
       </div>
     </article>
   );
