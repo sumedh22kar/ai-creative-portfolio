@@ -358,6 +358,20 @@ async function main() {
             description: "Receive the approved final creative ready for your campaign or platform."
           }
         ]
+      },
+      seo: {
+        title: "AI-Powered Creative Studio",
+        description: "AI-powered creative studio creating premium images, videos, product advertisements and visual content for brands and digital campaigns.",
+        keywords: [
+          "AI creative studio",
+          "AI image generation",
+          "AI video production",
+          "product advertising",
+          "AI fashion creatives",
+          "social media creatives"
+        ],
+        siteUrl: "",
+        shareImage: ""
       }
     };
   }

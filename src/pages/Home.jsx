@@ -1,3 +1,4 @@
+import HomeSEO from "../components/SEO/HomeSEO";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
 import StudioStats from "../components/StudioStats/StudioStats";
@@ -12,6 +13,7 @@ import Footer from "../components/Footer/Footer";
 function Home() {
   return (
     <div id="top">
+      <HomeSEO />
       <Navbar />
 
       <main>
