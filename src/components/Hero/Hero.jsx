@@ -1,34 +1,29 @@
 import { siteConfig } from "../../generated/siteConfig";
 
 function Hero() {
-  const heroData = siteConfig?.hero || {};
+  const { hero } = siteConfig;
 
   return (
     <section className="hero" id="hero">
       <div className="hero__container">
         <div className="hero__content">
           <p className="hero__eyebrow">
-            {heroData.eyebrow || "MS AI DIGITAL CREATOR"}
+            {hero.eyebrow}
           </p>
 
-          <h1>
-            We Create
-            <span> AI-Powered </span>
-            Visuals.
-          </h1>
+          <h1>{hero.title}</h1>
 
           <p className="hero__description">
-            {heroData.description ||
-              "AI images, AI videos and advertising creatives designed to help modern brands stand out."}
+            {hero.description}
           </p>
 
           <div className="hero__actions">
             <a href="#portfolio" className="hero__button hero__button--primary">
-              {heroData.primaryCta || "View Our Work"}
+              {hero.primaryCta}
             </a>
 
             <a href="#contact" className="hero__button hero__button--secondary">
-              {heroData.secondaryCta || "Start a Project"}
+              {hero.secondaryCta}
             </a>
           </div>
         </div>
