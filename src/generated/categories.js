@@ -1,12 +1,22 @@
 export const categories = [
-  "AI Image Generation",
-  "AI Video Production",
-  "Product Advertising",
-  "AI UGC / Testimonials",
-  "AI Fashion",
-  "Product Visualization",
-  "Image-to-Video",
-  "Social Media Creatives",
-  "AI Characters / Lifestyle",
-  "Custom AI Projects"
+  {
+    "id": "all",
+    "label": "All Work"
+  },
+  {
+    "id": "AI Video Production",
+    "label": "AI Video"
+  },
+  {
+    "id": "AI Image Generation",
+    "label": "AI Image"
+  },
+  {
+    "id": "Product Advertising",
+    "label": "Product Ads"
+  },
+  {
+    "id": "AI Fashion",
+    "label": "Fashion"
+  }
 ];

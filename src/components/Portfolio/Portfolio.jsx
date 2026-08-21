@@ -1,13 +1,18 @@
 import { useMemo, useState } from "react";
 import { projects } from "../../generated/projects";
+import { categories } from "../../generated/categories";
 import { siteConfig } from "../../generated/siteConfig";
 import PortfolioCard from "./PortfolioCard";
 import ProjectDetails from "../ProjectDetails/ProjectDetails";
 
+
 function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [activeCategory, setActiveCategory] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
+
+
   const { portfolio } = siteConfig.sections;
+
 
   const publishedProjects = useMemo(() => {
     return projects
@@ -19,27 +24,32 @@ function Portfolio() {
       );
   }, []);
 
-  const categories = useMemo(() => {
-    const uniqueCategories = [
-      ...new Set(
-        publishedProjects
-          .map((project) => project.category)
-          .filter(Boolean)
-      ),
-    ];
 
-    return ["ALL", ...uniqueCategories];
+  const availableCategories = useMemo(() => {
+    return categories.filter((category) => {
+      if (category.id === "all") {
+        return true;
+      }
+
+
+      return publishedProjects.some(
+        (project) => project.category === category.id
+      );
+    });
   }, [publishedProjects]);
 
+
   const filteredProjects = useMemo(() => {
-    if (activeCategory === "ALL") {
+    if (activeCategory === "all") {
       return publishedProjects;
     }
+
 
     return publishedProjects.filter(
       (project) => project.category === activeCategory
     );
   }, [activeCategory, publishedProjects]);
+
 
   return (
     <>
@@ -50,32 +60,37 @@ function Portfolio() {
               {portfolio.eyebrow}
             </span>
 
+
             <h2>{portfolio.title}</h2>
           </div>
+
 
           <p>{portfolio.description}</p>
         </div>
 
+
         <div
           className="portfolio__filters"
-          role="tablist"
-          aria-label="Project categories"
+          aria-label="Portfolio filters"
         >
-          {categories.map((category) => (
+          {availableCategories.map((category) => (
             <button
-              key={category}
+              key={category.id}
               type="button"
-              className={
-                activeCategory === category
-                  ? "portfolio__filter portfolio__filter--active"
-                  : "portfolio__filter"
+              className={`portfolio__filter ${
+                activeCategory === category.id
+                  ? "portfolio__filter--active"
+                  : ""
+              }`}
+              onClick={() =>
+                setActiveCategory(category.id)
               }
-              onClick={() => setActiveCategory(category)}
             >
-              {category}
+              {category.label}
             </button>
           ))}
         </div>
+
 
         <div className="portfolio__grid">
           {filteredProjects.map((project) => (
@@ -87,10 +102,11 @@ function Portfolio() {
           ))}
         </div>
 
+
         {filteredProjects.length === 0 && (
-          <div className="portfolio__empty">
-            <p>No projects found in this category.</p>
-          </div>
+          <p className="portfolio__empty">
+            No projects available in this category yet.
+          </p>
         )}
       </section>
 
@@ -103,5 +119,6 @@ function Portfolio() {
     </>
   );
 }
+
 
 export default Portfolio;
