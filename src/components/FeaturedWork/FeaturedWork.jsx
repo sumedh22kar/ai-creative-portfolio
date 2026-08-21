@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { projects } from "../../generated/projects";
+import { siteConfig } from "../../generated/siteConfig";
 import PortfolioCard from "../Portfolio/PortfolioCard";
 import ProjectDetails from "../ProjectDetails/ProjectDetails";
 
 function FeaturedWork() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const { featured } = siteConfig.sections;
 
   const featuredProjects = projects
     .filter((project) => project.published && project.featured)
@@ -20,15 +22,13 @@ function FeaturedWork() {
         <div className="featured-work__header">
           <div>
             <span className="section-label">
-              FEATURED WORK
+              {featured.eyebrow}
             </span>
 
-            <h2>Selected Projects</h2>
+            <h2>{featured.title}</h2>
           </div>
 
-          <p>
-            A selection of our strongest AI-powered creative work.
-          </p>
+          <p>{featured.description}</p>
         </div>
 
         <div className="featured-work__grid">
@@ -43,7 +43,7 @@ function FeaturedWork() {
 
         <div className="featured-work__action">
           <a href="#portfolio">
-            View All Work <span>→</span>
+            {featured.buttonText} <span>→</span>
           </a>
         </div>
       </section>

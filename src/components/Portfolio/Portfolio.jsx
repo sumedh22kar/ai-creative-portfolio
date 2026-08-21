@@ -1,11 +1,13 @@
 import { useMemo, useState } from "react";
 import { projects } from "../../generated/projects";
+import { siteConfig } from "../../generated/siteConfig";
 import PortfolioCard from "./PortfolioCard";
 import ProjectDetails from "../ProjectDetails/ProjectDetails";
 
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [selectedProject, setSelectedProject] = useState(null);
+  const { portfolio } = siteConfig.sections;
 
   const publishedProjects = useMemo(() => {
     return projects
@@ -45,15 +47,13 @@ function Portfolio() {
         <div className="portfolio__header">
           <div>
             <span className="section-label">
-              ALL WORK
+              {portfolio.eyebrow}
             </span>
 
-            <h2>Creative Portfolio</h2>
+            <h2>{portfolio.title}</h2>
           </div>
 
-          <p>
-            Explore our AI-powered image and video creative work.
-          </p>
+          <p>{portfolio.description}</p>
         </div>
 
         <div
