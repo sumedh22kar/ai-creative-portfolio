@@ -8,18 +8,16 @@ function Navbar() {
     setMenuOpen(false);
   };
 
-  const businessName = siteConfig?.business?.name || "MS AI Digital Creator";
-
   return (
     <header className="navbar">
       <div className="navbar__container">
         <a href="#top" className="navbar__logo" onClick={closeMenu}>
           <img
             src="/MSLOGO.png"
-            alt={`${businessName} Logo`}
+            alt={`${siteConfig.business.name} Logo`}
             className="navbar__logo-img"
           />
-          <span className="navbar__logo-text">{businessName}</span>
+          <span className="navbar__logo-text">{siteConfig.business.name}</span>
         </a>
 
         <button

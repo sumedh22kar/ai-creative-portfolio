@@ -1,8 +1,6 @@
 import { siteConfig } from "../../generated/siteConfig";
 
 function Footer() {
-  const businessName = siteConfig?.business?.name || "MS AI Digital Creator";
-
   return (
     <footer className="footer">
       <div className="footer__top">
@@ -10,16 +8,13 @@ function Footer() {
           <a href="#top" className="footer__logo">
             <img
               src="/MSLOGO.png"
-              alt={`${businessName} Logo`}
+              alt={`${siteConfig.business.name} Logo`}
               className="footer__logo-img"
             />
-            <span>{businessName}</span>
+            <span>{siteConfig.business.name}</span>
           </a>
 
-          <p>
-            {siteConfig?.business?.description ||
-              "AI-powered images, videos and creative advertising for modern brands."}
-          </p>
+          <p>{siteConfig.business.description}</p>
         </div>
 
         <div className="footer__links">
@@ -31,7 +26,9 @@ function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <span>© {new Date().getFullYear()} {businessName}</span>
+        <span>
+          © {new Date().getFullYear()} {siteConfig.business.name}. All rights reserved.
+        </span>
 
         <span>AI Images • AI Videos • Creative Advertising</span>
       </div>
