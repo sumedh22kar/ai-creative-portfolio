@@ -1,16 +1,14 @@
 export const projects = [
   {
     "id": "project-001",
+    "slug": "ai-product-advertisement",
     "title": "AI Product Advertisement",
     "category": "Product Advertising",
     "type": "youtube",
+    "aspectRatio": "9 / 16",
     "description": "AI-generated product advertisement created for social media marketing.",
     "thumbnail": "https://img.youtube.com/vi/DlFrVmvWL9I/maxresdefault.jpg",
     "mediaUrl": "https://www.youtube.com/embed/DlFrVmvWL9I",
-    "aspectRatio": "9 / 16",
-    "featured": true,
-    "published": true,
-    "displayOrder": 1,
     "services": [
       "AI Video Generation",
       "Creative Direction",
@@ -20,20 +18,22 @@ export const projects = [
       "AI Video",
       "Product Advertising",
       "Short-form"
-    ]
+    ],
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "displayOrder": 1
   },
   {
     "id": "project-002",
+    "slug": "ai-video-creative",
     "title": "AI Video Creative",
     "category": "AI Video Production",
     "type": "youtube",
+    "aspectRatio": "9 / 16",
     "description": "AI-generated short-form video creative designed for social media advertising.",
     "thumbnail": "https://img.youtube.com/vi/IoVsKFDES5U/maxresdefault.jpg",
     "mediaUrl": "https://www.youtube.com/embed/IoVsKFDES5U",
-    "aspectRatio": "9 / 16",
-    "featured": true,
-    "published": true,
-    "displayOrder": 2,
     "services": [
       "AI Video Generation",
       "Creative Development",
@@ -43,6 +43,35 @@ export const projects = [
       "AI Video",
       "Social Media",
       "Advertisement"
-    ]
+    ],
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "displayOrder": 2
+  },
+  {
+    "id": "project-003",
+    "slug": "ai-short-video-creative",
+    "title": "AI Short Video Creative",
+    "category": "AI Video Production",
+    "type": "youtube",
+    "aspectRatio": "9 / 16",
+    "description": "AI-generated short-form video creative developed for digital and social media advertising.",
+    "thumbnail": "https://img.youtube.com/vi/dgnW3FiHtFU/maxresdefault.jpg",
+    "mediaUrl": "https://www.youtube.com/embed/dgnW3FiHtFU",
+    "services": [
+      "AI Video Generation",
+      "Creative Development",
+      "Video Editing"
+    ],
+    "tags": [
+      "AI Video",
+      "Short-form",
+      "Social Media"
+    ],
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "displayOrder": 3
   }
 ];
