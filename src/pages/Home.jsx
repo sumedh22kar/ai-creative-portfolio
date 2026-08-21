@@ -17,9 +17,9 @@ function Home() {
       <main>
         <Hero />
         <StudioStats />
+        <Services />
         <FeaturedWork />
         <Portfolio />
-        <Services />
         <Workflow />
         <About />
         <ProjectCTA />

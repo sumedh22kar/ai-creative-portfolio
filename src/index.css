@@ -532,10 +532,10 @@
   border-top: 1px solid #292929;
 }
 
-.service-item {
+.services__item {
   position: relative;
   display: grid;
-  grid-template-columns: 70px 1fr 1fr 40px;
+  grid-template-columns: 70px 1fr 40px;
   gap: 30px;
   align-items: center;
   padding: 30px 0;
@@ -545,75 +545,88 @@
     background 0.25s ease;
 }
 
-.service-item:hover {
+.services__item:hover {
   padding-left: 16px;
   padding-right: 16px;
   background: #111;
 }
 
-.service-item__number {
+.services__number {
   color: #555;
   font-size: 12px;
 }
 
-.service-item h3 {
+.services__content {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) 1.2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.services__content h3 {
   margin: 0;
-  font-size: 22px;
+
+  color: #f2f2f2;
+
+  font-size: clamp(22px, 2.4vw, 34px);
   font-weight: 500;
 }
 
-.service-item p {
+.services__content p {
   margin: 0;
-  color: #888;
+
+  color: #777;
+
   font-size: 14px;
   line-height: 1.6;
 }
 
-.service-item__arrow {
+.services__arrow {
   color: #777;
-  font-size: 22px;
+
+  font-size: 20px;
+
+  text-align: right;
   transition:
     transform 0.25s ease,
     color 0.25s ease;
 }
 
-.service-item:hover .service-item__arrow {
+.services__item:hover .services__arrow {
   color: #fff;
   transform: translate(3px, -3px);
 }
 
 @media (max-width: 800px) {
   .services {
-    padding: 90px 24px;
+    padding: 90px 16px;
   }
 
   .services__header {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 25px;
+
+    margin-bottom: 45px;
   }
 
-  .service-item {
-    grid-template-columns: 45px 1fr 30px;
-    gap: 16px;
+  .services__content {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .service-item p {
-    display: none;
+  .services__item {
+    grid-template-columns: 40px 1fr 25px;
+    gap: 15px;
+
+    padding: 25px 0;
   }
 
-  .service-item h3 {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 500px) {
-  .services__header h2 {
-    letter-spacing: -2px;
+  .services__item:hover {
+    padding-left: 0;
   }
 
-  .service-item {
-    grid-template-columns: 35px 1fr 25px;
-    padding: 24px 0;
+  .services__content p {
+    font-size: 13px;
   }
 }
 .workflow {
