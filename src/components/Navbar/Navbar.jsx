@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { siteConfig } from "../../generated/siteConfig";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -7,11 +8,18 @@ function Navbar() {
     setMenuOpen(false);
   };
 
+  const businessName = siteConfig?.business?.name || "MS AI Digital Creator";
+
   return (
     <header className="navbar">
       <div className="navbar__container">
         <a href="#top" className="navbar__logo" onClick={closeMenu}>
-          AI<span>CREATIVE</span>
+          <img
+            src="/MSLOGO.png"
+            alt={`${businessName} Logo`}
+            className="navbar__logo-img"
+          />
+          <span className="navbar__logo-text">{businessName}</span>
         </a>
 
         <button

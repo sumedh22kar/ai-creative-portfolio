@@ -29,7 +29,7 @@ function PortfolioMedia({ project }) {
         />
 
         <div className="portfolio-media__watermark">
-          AI CREATIVE
+          MS AI DIGITAL CREATOR
         </div>
       </div>
     );

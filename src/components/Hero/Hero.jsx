@@ -1,10 +1,14 @@
+import { siteConfig } from "../../generated/siteConfig";
+
 function Hero() {
+  const heroData = siteConfig?.hero || {};
+
   return (
     <section className="hero" id="hero">
       <div className="hero__container">
         <div className="hero__content">
           <p className="hero__eyebrow">
-            AI CREATIVE STUDIO
+            {heroData.eyebrow || "MS AI DIGITAL CREATOR"}
           </p>
 
           <h1>
@@ -14,17 +18,17 @@ function Hero() {
           </h1>
 
           <p className="hero__description">
-            AI images, AI videos and advertising creatives designed
-            to help modern brands stand out.
+            {heroData.description ||
+              "AI images, AI videos and advertising creatives designed to help modern brands stand out."}
           </p>
 
           <div className="hero__actions">
             <a href="#portfolio" className="hero__button hero__button--primary">
-              View Our Work
+              {heroData.primaryCta || "View Our Work"}
             </a>
 
             <a href="#contact" className="hero__button hero__button--secondary">
-              Start a Project
+              {heroData.secondaryCta || "Start a Project"}
             </a>
           </div>
         </div>
