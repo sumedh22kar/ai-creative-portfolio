@@ -118,6 +118,87 @@ async function downloadProjectMedia(
   };
 }
 
+const SUPPORTED_PROJECT_TYPES = ["youtube", "image"];
+
+function validateProject(project, existingProjects) {
+  const requiredFields = [
+    "id",
+    "slug",
+    "title",
+    "category",
+    "type",
+    "description",
+    "aspectRatio",
+    "year",
+    "published",
+    "featured",
+    "displayOrder",
+  ];
+
+  for (const field of requiredFields) {
+    if (
+      project[field] === undefined ||
+      project[field] === null ||
+      project[field] === ""
+    ) {
+      throw new Error(
+        `Project validation failed: "${field}" is required for ${project.id || "unknown project"}.`,
+      );
+    }
+  }
+
+  if (!SUPPORTED_PROJECT_TYPES.includes(project.type)) {
+    throw new Error(
+      `Project validation failed: Unsupported type "${project.type}" for ${project.id}.`,
+    );
+  }
+
+  if (
+    existingProjects.some(
+      (existingProject) => existingProject.id === project.id,
+    )
+  ) {
+    throw new Error(
+      `Project validation failed: Duplicate project id "${project.id}".`,
+    );
+  }
+
+  if (
+    existingProjects.some(
+      (existingProject) => existingProject.slug === project.slug,
+    )
+  ) {
+    throw new Error(
+      `Project validation failed: Duplicate project slug "${project.slug}".`,
+    );
+  }
+
+  if (
+    !Number.isInteger(project.displayOrder) ||
+    project.displayOrder < 1
+  ) {
+    throw new Error(
+      `Project validation failed: displayOrder must be a positive integer for ${project.id}.`,
+    );
+  }
+
+  if (project.type === "youtube") {
+    if (!project.thumbnail || !project.mediaUrl) {
+      throw new Error(
+        `Project validation failed: YouTube project ${project.id} requires thumbnail and mediaUrl.`,
+      );
+    }
+  }
+
+  if (project.type === "image") {
+    if (!project.mediaPath) {
+      throw new Error(
+        `Project validation failed: Image project ${project.id} requires mediaPath.`,
+      );
+    }
+  }
+}
+
 async function main() {
   console.log("Fetching portfolio content...");
 
@@ -148,6 +229,8 @@ async function main() {
     console.log(`Reading ${file.name}`);
 
     const project = await getJsonFile(file.path);
+
+    validateProject(project, projects);
 
     if (project.type === "image" && project.mediaPath) {
       const media = await downloadProjectMedia(
