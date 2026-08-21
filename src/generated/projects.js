@@ -98,5 +98,30 @@ export const projects = [
     "published": true,
     "displayOrder": 4,
     "mediaUrl": "/generated/media/project-004.jpg"
+  },
+  {
+    "id": "project-005",
+    "slug": "ai-product-video-showcase",
+    "title": "AI Product Video Showcase",
+    "category": "Product Advertising",
+    "type": "youtube",
+    "aspectRatio": "9 / 16",
+    "description": "AI-generated product-focused short-form video created to demonstrate creative advertising and social media content possibilities.",
+    "thumbnail": "https://img.youtube.com/vi/DlFrVmvWL9I/maxresdefault.jpg",
+    "mediaUrl": "https://www.youtube.com/embed/DlFrVmvWL9I",
+    "services": [
+      "AI Video Generation",
+      "Product Creative Direction",
+      "Video Editing"
+    ],
+    "tags": [
+      "AI Video",
+      "Product Advertising",
+      "Creative Showcase"
+    ],
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "displayOrder": 5
   }
 ];

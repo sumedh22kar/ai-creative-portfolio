@@ -255,6 +255,37 @@ async function main() {
     "categories/categories.json",
   );
 
+  let siteConfig;
+  try {
+    siteConfig = await getJsonFile(
+      "config/site.config.json",
+    );
+  } catch {
+    siteConfig = {
+      business: {
+        name: "MS Ai digital creator",
+        tagline: "AI-Powered Creative Studio",
+        description: "We create AI-powered images, videos and commercial creative content."
+      },
+      hero: {
+        eyebrow: "AI CREATIVE STUDIO",
+        title: "Creative visuals built with AI.",
+        description: "We create AI-powered images and videos for brands, products and digital campaigns.",
+        primaryCta: "View Our Work",
+        secondaryCta: "Start a Project"
+      },
+      contact: {
+        email: "",
+        whatsapp: "755 843 4056",
+        instagram: ""
+      },
+      portfolio: {
+        featuredTitle: "Selected Projects",
+        allWorkTitle: "Creative Portfolio"
+      }
+    };
+  }
+
   const projectsFile = `export const projects = ${JSON.stringify(
     projects,
     null,
@@ -263,6 +294,12 @@ async function main() {
 
   const categoriesFile = `export const categories = ${JSON.stringify(
     categoriesData.categories ?? [],
+    null,
+    2,
+  )};\n`;
+
+  const siteConfigFile = `export const siteConfig = ${JSON.stringify(
+    siteConfig,
     null,
     2,
   )};\n`;
@@ -276,6 +313,12 @@ async function main() {
   await fs.writeFile(
     path.join(generatedDirectory, "categories.js"),
     categoriesFile,
+    "utf8",
+  );
+
+  await fs.writeFile(
+    path.join(generatedDirectory, "siteConfig.js"),
+    siteConfigFile,
     "utf8",
   );
 
