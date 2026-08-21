@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { projects } from "../../generated/projects";
@@ -8,6 +9,10 @@ import Footer from "../../components/Footer/Footer";
 
 function ProjectPage() {
   const { slug } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   const project = projects.find(
     (item) => item.slug === slug && item.published !== false
@@ -104,46 +109,52 @@ function ProjectPage() {
                   : undefined,
             }}
           >
-            <PortfolioMedia project={project} />
+            <PortfolioMedia project={project} autoplay={false} />
           </div>
         </section>
 
         <section className="project-page__details">
-          <div>
-            <span className="project-page__label">
-              SERVICES
-            </span>
+          {project.services?.length > 0 && (
+            <div>
+              <span className="project-page__label">
+                SERVICES
+              </span>
 
-            <div className="project-page__tags">
-              {project.services?.map((service) => (
-                <span key={service}>
-                  {service}
-                </span>
-              ))}
+              <div className="project-page__tags">
+                {project.services.map((service) => (
+                  <span key={service}>
+                    {service}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div>
-            <span className="project-page__label">
-              TAGS
-            </span>
+          {project.tags?.length > 0 && (
+            <div>
+              <span className="project-page__label">
+                TAGS
+              </span>
 
-            <div className="project-page__tags">
-              {project.tags?.map((tag) => (
-                <span key={tag}>
-                  {tag}
-                </span>
-              ))}
+              <div className="project-page__tags">
+                {project.tags.map((tag) => (
+                  <span key={tag}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div>
-            <span className="project-page__label">
-              YEAR
-            </span>
+          {project.year && (
+            <div>
+              <span className="project-page__label">
+                YEAR
+              </span>
 
-            <p>{project.year}</p>
-          </div>
+              <p>{project.year}</p>
+            </div>
+          )}
         </section>
 
         <div className="project-page__cta">

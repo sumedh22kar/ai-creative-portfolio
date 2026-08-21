@@ -70,7 +70,10 @@ function ProjectDetails({ project, projects = [], onClose, onOpenProject }) {
                   : undefined,
             }}
           >
-            <PortfolioMedia project={project} />
+            <PortfolioMedia
+              project={project}
+              autoplay={project.type === "youtube"}
+            />
           </div>
         </div>
 

@@ -1,24 +1,34 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { siteConfig } from "../../generated/siteConfig";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
+  const navLinks = [
+    { label: "Work", anchor: "#portfolio" },
+    { label: "Services", anchor: "#services" },
+    { label: "About", anchor: "#about" },
+    { label: "Contact", anchor: "#contact" },
+  ];
+
   return (
     <header className="navbar">
       <div className="navbar__container">
-        <a href="#top" className="navbar__logo" onClick={closeMenu}>
+        <Link to="/" className="navbar__logo" onClick={closeMenu}>
           <img
             src="/MSLOGO.png"
             alt={`${siteConfig.business.name} Logo`}
             className="navbar__logo-img"
           />
           <span className="navbar__logo-text">{siteConfig.business.name}</span>
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -36,21 +46,25 @@ function Navbar() {
             menuOpen ? "navbar__links navbar__links--open" : "navbar__links"
           }
         >
-          <a href="#portfolio" onClick={closeMenu}>
-            Work
-          </a>
-
-          <a href="#services" onClick={closeMenu}>
-            Services
-          </a>
-
-          <a href="#about" onClick={closeMenu}>
-            About
-          </a>
-
-          <a href="#contact" onClick={closeMenu}>
-            Contact
-          </a>
+          {navLinks.map((link) =>
+            isHome ? (
+              <a
+                key={link.label}
+                href={link.anchor}
+                onClick={closeMenu}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                to={`/${link.anchor}`}
+                onClick={closeMenu}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
       </div>
     </header>

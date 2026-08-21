@@ -1,7 +1,22 @@
 import { useState } from "react";
 
-function PortfolioMedia({ project }) {
-  const [videoStarted, setVideoStarted] = useState(false);
+function getYoutubeEmbedUrl(mediaUrl, autoplay) {
+  const params = new URLSearchParams({
+    rel: "0",
+    modestbranding: "1",
+    playsinline: "1",
+  });
+
+  if (autoplay) {
+    params.set("autoplay", "1");
+    params.set("mute", "1");
+  }
+
+  return `${mediaUrl}?${params.toString()}`;
+}
+
+function PortfolioMedia({ project, autoplay = false }) {
+  const [videoStarted, setVideoStarted] = useState(autoplay);
 
   if (project.type === "image") {
     if (!project.mediaUrl) {
@@ -54,17 +69,21 @@ function PortfolioMedia({ project }) {
             aspectRatio: project.aspectRatio || "16 / 10",
           }}
           onContextMenu={(event) => event.preventDefault()}
-          onClick={() => setVideoStarted(true)}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setVideoStarted(true);
+          }}
           aria-label={`Play ${project.title}`}
         >
-  <div className="portfolio-video-preview__overlay">
-    <span className="portfolio-video-preview__play">▶</span>
-  </div>
+          <div className="portfolio-video-preview__overlay">
+            <span className="portfolio-video-preview__play">▶</span>
+          </div>
 
-  <div className="portfolio-video-preview__label">
-    WATCH VIDEO
-  </div>
-</button>
+          <div className="portfolio-video-preview__label">
+            WATCH VIDEO
+          </div>
+        </button>
       );
     }
 
@@ -72,7 +91,7 @@ function PortfolioMedia({ project }) {
       <iframe
         className="portfolio-media portfolio-media--youtube"
         style={{ aspectRatio: project.aspectRatio || "16 / 10" }}
-        src={`${project.mediaUrl}?autoplay=1`}
+        src={getYoutubeEmbedUrl(project.mediaUrl, videoStarted)}
         title={project.title}
         loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

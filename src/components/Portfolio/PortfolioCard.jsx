@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
 import PortfolioMedia from "../PortfolioMedia/PortfolioMedia";
 
-function PortfolioCard({ project }) {
-  return (
-    <Link
-      to={`/project/${project.slug}`}
-      className="portfolio-card__link"
-    >
+function PortfolioCard({ project, onOpen }) {
+  const card = (
       <article className="portfolio-card">
         <div
           className="portfolio-card__media"
@@ -18,7 +14,7 @@ function PortfolioCard({ project }) {
 
           <div className="portfolio-card__overlay">
             <span className="portfolio-card__open">
-              VIEW PROJECT ↗
+              VIEW PROJECT
             </span>
           </div>
         </div>
@@ -49,6 +45,27 @@ function PortfolioCard({ project }) {
           )}
         </div>
       </article>
+  );
+
+  if (onOpen) {
+    return (
+      <button
+        type="button"
+        className="portfolio-card__link portfolio-card__link--button"
+        onClick={() => onOpen(project)}
+        aria-label={`Open ${project.title}`}
+      >
+        {card}
+      </button>
+    );
+  }
+
+  return (
+    <Link
+      to={`/project/${project.slug}`}
+      className="portfolio-card__link"
+    >
+      {card}
     </Link>
   );
 }

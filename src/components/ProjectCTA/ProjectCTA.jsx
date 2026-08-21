@@ -9,8 +9,8 @@ function ProjectCTA() {
     : null;
 
   return (
-    <section className="project-cta" id="contact">
-      <div className="project-cta__content">
+    <section className="project-cta" id="start-project">
+      <div className="project-cta__inner">
         <span className="section-label">
           {contactSection.eyebrow}
         </span>
