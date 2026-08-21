@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { projects } from "../../generated/projects";
+import { siteConfig } from "../../generated/siteConfig";
 import PortfolioMedia from "../../components/PortfolioMedia/PortfolioMedia";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -33,8 +35,45 @@ function ProjectPage() {
     );
   }
 
+  const businessName = siteConfig.business.name;
+  const pageTitle = `${project.title} | ${businessName}`;
+  const pageDescription =
+    project.description ||
+    siteConfig.business.description;
+
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+
+        <meta
+          name="description"
+          content={pageDescription}
+        />
+
+        <meta
+          property="og:title"
+          content={pageTitle}
+        />
+
+        <meta
+          property="og:description"
+          content={pageDescription}
+        />
+
+        <meta
+          property="og:type"
+          content="website"
+        />
+
+        {project.type === "image" && project.mediaUrl && (
+          <meta
+            property="og:image"
+            content={project.mediaUrl}
+          />
+        )}
+      </Helmet>
+
       <Navbar />
       <main className="project-page">
         <div className="project-page__top">
