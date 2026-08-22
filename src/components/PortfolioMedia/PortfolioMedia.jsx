@@ -15,7 +15,7 @@ function getYoutubeEmbedUrl(mediaUrl, autoplay) {
   return `${mediaUrl}?${params.toString()}`;
 }
 
-function PortfolioMedia({ project, autoplay = false }) {
+function PortfolioMedia({ project, autoplay = false, interactive = true }) {
   const [videoStarted, setVideoStarted] = useState(autoplay);
 
   if (project.type === "image") {
@@ -60,21 +60,27 @@ function PortfolioMedia({ project, autoplay = false }) {
     }
 
     if (!videoStarted) {
+      const PreviewElement = interactive ? "button" : "div";
+
       return (
-        <button
-          type="button"
+        <PreviewElement
+          {...(interactive ? { type: "button" } : {})}
           className="portfolio-video-preview"
           style={{
             "--video-thumbnail": `url("${project.thumbnail}")`,
             aspectRatio: project.aspectRatio || "16 / 10",
           }}
           onContextMenu={(event) => event.preventDefault()}
-          onClick={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            setVideoStarted(true);
-          }}
-          aria-label={`Play ${project.title}`}
+          onClick={
+            interactive
+              ? (event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setVideoStarted(true);
+                }
+              : undefined
+          }
+          aria-label={interactive ? `Play ${project.title}` : undefined}
         >
           <div className="portfolio-video-preview__overlay">
             <span className="portfolio-video-preview__play">▶</span>
@@ -83,7 +89,7 @@ function PortfolioMedia({ project, autoplay = false }) {
           <div className="portfolio-video-preview__label">
             WATCH VIDEO
           </div>
-        </button>
+        </PreviewElement>
       );
     }
 

@@ -2983,7 +2983,12 @@ button:focus-visible {
 }
 
 .portfolio-card__media {
+  aspect-ratio: var(--card-media-ratio, 4 / 5);
   background: #050609;
+}
+
+.featured-work__grid .portfolio-card:first-child .portfolio-card__media {
+  aspect-ratio: 16 / 9;
 }
 
 .portfolio-card__overlay {
@@ -3122,6 +3127,9 @@ button:focus-visible {
 }
 
 .project-details__panel {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+  align-items: stretch;
   width: min(1060px, 100%);
   max-height: 92vh;
   overflow: auto;
@@ -3150,7 +3158,8 @@ button:focus-visible {
 
 .project-details__media {
   max-height: none;
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-bottom: 0;
   background: #050609;
 }
 
@@ -3160,7 +3169,7 @@ button:focus-visible {
 }
 
 .project-details__media--youtube .project-details__media-inner {
-  width: min(390px, 100%);
+  width: min(330px, 100%);
 }
 
 .project-details__media--youtube iframe {
@@ -3178,7 +3187,7 @@ button:focus-visible {
 }
 
 .project-details__media--image .project-details__media-inner {
-  width: min(620px, 100%);
+  width: min(360px, 100%);
 }
 
 .project-details__content {
@@ -3316,8 +3325,9 @@ button:focus-visible {
   }
 
   .hero__container {
-    padding-top: 48px;
-    padding-bottom: 56px;
+    gap: 28px;
+    padding-top: 36px;
+    padding-bottom: 42px;
   }
 
   .hero h1 {
@@ -3343,16 +3353,16 @@ button:focus-visible {
   }
 
   .hero__visual-frame {
-    width: min(100%, 320px);
+    width: min(100%, 240px);
+    aspect-ratio: 4 / 5;
+  }
+
+  .hero__visual {
+    display: block;
   }
 
   .hero__visual-panel {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    width: min(100%, 320px);
-    margin-top: 12px;
+    display: none;
   }
 
   .studio-stats__grid,
@@ -3410,6 +3420,7 @@ button:focus-visible {
   }
 
   .project-details__panel {
+    display: block;
     width: 100%;
     height: 100%;
     max-height: 100vh;
@@ -3423,7 +3434,9 @@ button:focus-visible {
 
   .project-details__media--youtube,
   .project-details__media--image {
-    padding: 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 64px 14px 14px;
   }
 
   .project-details__more-grid {
